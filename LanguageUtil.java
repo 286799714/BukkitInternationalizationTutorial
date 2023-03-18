@@ -61,7 +61,8 @@ public class LanguageUtil {
         }
     }
 
-    public static boolean load(Plugin plugin, String path){
+    public static boolean load(Plugin plugin, Locale locale) {
+        String path = "lang/" + locale.toString() + ".yml";
         //load language configuration from file
         File file = new File(plugin.getDataFolder(), path);
         if(!file.exists()){
@@ -107,9 +108,5 @@ public class LanguageUtil {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException ignore) {}
         return true;
-    }
-
-    public static boolean load(Plugin plugin, Locale locale) {
-        return load(plugin, "lang/" + locale.toString() + ".yml");
     }
 }
